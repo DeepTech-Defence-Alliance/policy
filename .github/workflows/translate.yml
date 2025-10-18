@@ -1,0 +1,191 @@
+name: Auto-translate Documentation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'dtda-site/docs/**/*.mdx'
+      - 'dtda-site/docs/**/*.md'
+  workflow_dispatch:
+
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: dtda-site/package-lock.json
+
+      - name: Install dependencies
+        working-directory: dtda-site
+        run: npm ci
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install translation dependencies
+        run: |
+          pip install openai markdown
+
+      - name: Create translation script
+        run: |
+          cat > translate.py << 'EOF'
+          #!/usr/bin/env python3
+          """Auto-translate Dutch docs to English for i18n"""
+
+          import os
+          import sys
+          from pathlib import Path
+          import re
+
+          try:
+              from openai import OpenAI
+          except ImportError:
+              print("OpenAI not available, skipping translation")
+              sys.exit(0)
+
+          client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
+
+          def translate_content(text, filename):
+              """Translate Dutch content to English using GPT-4"""
+
+              # Skip if already English or if it's metadata/code
+              if text.strip().startswith('```') or len(text) < 50:
+                  return text
+
+              prompt = f"""Translate this Dutch military/defence policy documentation to English.
+
+          Context: This is part of the DTDA (DeepTech Defence Alliance) policy framework for JEF partners.
+
+          Requirements:
+          - Maintain all markdown formatting (headers, lists, tables, code blocks)
+          - Preserve all MDX imports and components
+          - Keep technical terms: JEF, DUOS, SLOS-DAA, ELOS-COOP, GEO-ASSURED, PROC-SEG
+          - Keep proper nouns: Zuidas, Amsterdam, Nederland → Netherlands
+          - Translate "Deel I" → "Part I", "Deel II" → "Part II"
+          - Keep YAML frontmatter as-is but translate title/sidebar_label
+          - Use British English spelling (defence not defense, colour not color)
+
+          Dutch content:
+          {text}
+
+          English translation:"""
+
+              try:
+                  response = client.chat.completions.create(
+                      model="gpt-4",
+                      messages=[
+                          {"role": "system", "content": "You are a professional translator specializing in military and defence policy documentation. You maintain perfect markdown formatting."},
+                          {"role": "user", "content": prompt}
+                      ],
+                      temperature=0.3,
+                      max_tokens=4000
+                  )
+
+                  translated = response.choices[0].message.content
+                  print(f"✓ Translated {filename}")
+                  return translated
+
+              except Exception as e:
+                  print(f"✗ Failed to translate {filename}: {e}")
+                  return text
+
+          def process_docs(docs_dir, i18n_dir):
+              """Process all Dutch docs and create English translations"""
+
+              docs_path = Path(docs_dir)
+              i18n_path = Path(i18n_dir) / 'en' / 'docusaurus-plugin-content-docs' / 'current'
+
+              if not docs_path.exists():
+                  print(f"Docs directory not found: {docs_dir}")
+                  return
+
+              # Create i18n structure
+              i18n_path.mkdir(parents=True, exist_ok=True)
+
+              # Process all .mdx and .md files
+              for doc_file in docs_path.rglob('*.mdx'):
+                  relative_path = doc_file.relative_to(docs_path)
+                  target_file = i18n_path / relative_path
+
+                  # Skip if English version is newer
+                  if target_file.exists() and target_file.stat().st_mtime > doc_file.stat().st_mtime:
+                      print(f"⊘ Skipping {relative_path} (English is up-to-date)")
+                      continue
+
+                  # Read Dutch content
+                  with open(doc_file, 'r', encoding='utf-8') as f:
+                      dutch_content = f.read()
+
+                  # Translate
+                  english_content = translate_content(dutch_content, str(relative_path))
+
+                  # Write English version
+                  target_file.parent.mkdir(parents=True, exist_ok=True)
+                  with open(target_file, 'w', encoding='utf-8') as f:
+                      f.write(english_content)
+
+                  print(f"✓ Created {target_file}")
+
+          if __name__ == '__main__':
+              if not os.getenv('OPENAI_API_KEY'):
+                  print("⚠ OPENAI_API_KEY not set, skipping translation")
+                  sys.exit(0)
+
+              docs_dir = 'dtda-site/docs'
+              i18n_dir = 'dtda-site/i18n'
+
+              print("🌍 Starting auto-translation...")
+              process_docs(docs_dir, i18n_dir)
+              print("✅ Translation complete")
+          EOF
+
+          chmod +x translate.py
+
+      - name: Run translation
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          python translate.py
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if [ -n "$(git status --porcelain dtda-site/i18n)" ]; then
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit translations
+        if: steps.changes.outputs.has_changes == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add dtda-site/i18n
+          git commit -m "Auto-translate: Update English documentation
+
+          Generated English translations from Dutch source files using GPT-4.
+
+          🤖 Automated translation via GitHub Actions"
+
+      - name: Push changes
+        if: steps.changes.outputs.has_changes == 'true'
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
