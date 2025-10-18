@@ -1,0 +1,307 @@
+---
+id: capacity-credits
+title: 06 — Capacity Credits & Availability Fees
+sidebar_label: 06 — Capacity Credits
+---
+
+import StatusBanner from '@site/src/components/StatusBanner';
+import KpiBadge from '@site/src/components/KpiBadge';
+
+<StatusBanner status="concept" versie="0.9" datum="2025-10" />
+
+# Capacity Credits & Availability Fees
+
+## Concept
+
+**Capacity Credits** = Vooraf betaalde productiecapaciteit ("surge insurance")
+**Availability Fees** = Paraatheidsvergoeding voor tooling, supply chain, personeel
+
+**Analogie:** Reserved instances in cloud computing — betaal voor beschikbaarheid, niet alleen voor gebruik.
+
+---
+
+## Waarom Nodig?
+
+### Problem: Traditional Procurement
+
+**Scenario:** Overheid koopt 100 drones.
+**Probleem bij escalatie:** Supplier kan niet snel opschalen want:
+- Tooling is uitgebreid (niet idle beschikbaar)
+- Supply chain is geoptimaliseerd voor peacetime volumes
+- Personeel is ingezet bij andere klanten
+- **Result:** 12+ maanden om productie 10x te maken
+
+### Solution: Capacity Credits
+
+**Scenario:** Overheid koopt **capacity credits** voor 1000 drones.
+**Benefit:** Supplier houdt gereed:
+- **Tooling** (CNC, 3D printers, assembly lines)
+- **Supply chain** agreements (Tier-1/Tier-2 commitments)
+- **Personeel** capacity (hiring/training pipeline)
+- **Result:** <KpiBadge label="Time-to-surge" value="≤ 6 weken" variant="ok" />
+
+---
+
+## Capacity Credits — Detailed Mechanics
+
+### Credit Purchase (Step 1)
+
+**Buyer (Overheid)** koopt credits representing **potential** productie.
+
+**Example:**
+```
+Credit purchase: 1000 tactical drones
+Unit cost (full production): €50K/drone
+Credit cost: 15% × €50K = €7.5K/credit
+Total credit investment: €7.5M
+```
+
+**What buyer gets:**
+- **Surge optie** — right to activate productie within 6 weken
+- **Guaranteed pricing** — €50K/drone locked in
+- **Priority access** — boven niet-credit klanten
+
+### Credit Activation (Step 2)
+
+**Trigger:** Escalation scenario (bv. Baltic crisis)
+
+**Process:**
+1. **T+0:** Overheid activeert 1000 credits
+2. **T+1 week:** Supplier starts tooling, orders components
+3. **T+6 weken:** First batch delivery (200 drones)
+4. **T+12 weken:** Full 1000 drones delivered
+
+**Payment upon activation:**
+```
+Credit already paid: €7.5M (15%)
+Remaining payment: €42.5M (85%)
+Total: €50M for 1000 drones
+```
+
+### Credit Expiry & Rollover (Step 3)
+
+**Expiry:** Credits expire na X jaar (bv. 3 jaar) als niet geactiveerd.
+
+**Options:**
+- **Rollover:** Renew credits (betaal 15% opnieuw)
+- **Partial activation:** Use credits voor kleinere orders
+- **Transfer:** Sell credits aan andere JEF landen (secondary market)
+
+---
+
+## Availability Fees — Detailed Mechanics
+
+**Availability Fee** = Jaarlijkse betaling voor **paraatheid** van systemen/tooling.
+
+### What is Covered?
+
+**Tooling Maintenance:**
+- CNC machines idle maar onderhouden
+- 3D printers kalibratie
+- Test equipment
+
+**Supply Chain Agreements:**
+- Tier-1 supplier commitments
+- Pre-negotiated pricing
+- Priority allocation clauses
+
+**Personnel Readiness:**
+- Hiring pipeline
+- Training programs
+- On-call expertise
+
+**Facility Overhead:**
+- Cleanroom maintenance
+- Security (export controls)
+- Utilities
+
+### Pricing Formula
+
+```
+Availability Fee = (Total System Value × Availability Target × Fee Factor)
+
+Where:
+  Total System Value = Full replacement cost
+  Availability Target = Required uptime % (e.g., 95%)
+  Fee Factor = 10-20% (depending on complexity)
+```
+
+**Example: ISR System**
+```
+Total System Value: €10M (sensors, platforms, ground stations)
+Availability Target: 95%
+Fee Factor: 15%
+
+Availability Fee = €10M × 0.95 × 0.15 = €1.425M/jaar
+```
+
+---
+
+## Combined Model: Credits + Availability
+
+Most contracts combine **both**:
+
+| Component | Purpose | Payment |
+|-----------|---------|---------|
+| **Capacity Credits** | Surge insurance | 15% upfront, 85% upon activation |
+| **Availability Fee** | Paraatheid operational systems | 10-20% jaarlijks |
+| **Usage Fee** | Actual missions/effects | Per mission/hour |
+
+**Example: Baltic ISR + Surge**
+
+| Item | Cost |
+|------|------|
+| **Capacity Credits** (1000 drones) | €7.5M (15% van €50M) |
+| **Availability Fee** (current 100 drones) | €1.425M/jaar |
+| **Usage Fee** (ISR missions) | €50K/dag × 365 = €18.25M/jaar |
+| **Total Annual** | €27.175M |
+
+**Upon surge activation:**
+- Spend €7.5M credits
+- Pay remaining €42.5M for 1000 drones
+- New availability fee: €14.25M/jaar (10x meer drones)
+
+---
+
+## Multi-year Contract Structure
+
+### Year 1-3: Build-up Phase
+
+**Focus:** Establish baseline capacity + credit reserves
+
+| Year | Capacity Credits | Availability Fee | Usage |
+|------|-----------------|-----------------|--------|
+| 1 | €7.5M (1000 drones) | €1.4M (100 drones) | €18.25M |
+| 2 | €7.5M (rollover) | €1.4M | €18.25M |
+| 3 | €7.5M (rollover) | €1.4M | €18.25M |
+
+### Year 4+: Steady State
+
+**Scenario 1 (Peacetime):**
+- Credits roll over, no activation
+- Availability fees continue
+- Usage fees for ongoing missions
+
+**Scenario 2 (Escalation):**
+- Credits activated → 1000 drones produced
+- Availability fees increase (10x capacity)
+- Usage fees increase (more missions)
+
+---
+
+## Incentive Alignment
+
+### For Supplier
+
+**Benefits van capacity credits + availability fees:**
+- ✅ **Predictable revenue** (availability fees)
+- ✅ **Locked-in surge orders** (credits)
+- ✅ **Cash flow** voor CAPEX (tooling investeringen)
+- ✅ **Risk mitigation** (paid to be ready)
+
+**Obligations:**
+- ⚠️ Maintain tooling readiness
+- ⚠️ Supply chain commitments
+- ⚠️ Surge drill participation
+- ⚠️ Transparency (audits)
+
+### For Buyer (Overheid)
+
+**Benefits:**
+- ✅ **Guaranteed surge** (within 6 weken)
+- ✅ **Locked-in pricing** (no price gouging)
+- ✅ **Flexibility** (activate only when needed)
+- ✅ **Transparency** (dashboards, audits)
+
+**Costs:**
+- ⚠️ Upfront credit investment (15%)
+- ⚠️ Annual availability fees (10-20%)
+- ⚠️ Potential credit expiry (if not activated)
+
+---
+
+## Secondary Market for Credits
+
+**Concept:** Credits kunnen worden verhandeld tussen JEF landen.
+
+**Example:**
+```
+Nederland koopt €50M credits (1000 drones)
+Na 2 jaar: geen activatie, credits expire soon
+Finland heeft urgent behoefte (Baltic escalation)
+
+Transfer:
+  - Nederland verkoopt 500 credits aan Finland voor €4M (discount)
+  - Finland activeert credits bij Nederlandse supplier
+  - Nederland houdt 500 credits + €4M liquidity
+```
+
+**Benefits:**
+- Prevents credit expiry waste
+- Improves JEF flexibility
+- Creates liquidity
+
+**Governance:**
+- Export controls (ITAR, EU dual-use)
+- Transfer approval (beide landen + EU)
+- Pricing transparency
+
+---
+
+## Risk Management
+
+### For Supplier
+
+**Risks:**
+| Risk | Mitigation |
+|------|------------|
+| Credits never activated | Availability fees cover overhead |
+| Tech obsolescence | Iteratie clauses (upgrade during contract) |
+| Supply chain disruption | Tier-2 visibility, alternative suppliers |
+| Regulatory change | Force majeure clauses |
+
+### For Buyer
+
+**Risks:**
+| Risk | Mitigation |
+|------|------------|
+| Supplier bankruptcy | Escrow accounts, parent company guarantees |
+| Surge drill failure | Quarterly tests, remediation plans |
+| Overinvestment in credits | Secondary market, rollover options |
+| Tech obsolescence | Upgrade paths, modular designs |
+
+---
+
+## Kapitaalmarkt (Zuidas) Integration
+
+**Why investors like this model:**
+
+1. **Recurring Revenue:**
+   - Availability fees = predictable annual income
+   - Multi-year contracts (3-5 jaar visibility)
+
+2. **Balance Sheet Optimization:**
+   - Capacity credits = asset (future revenue)
+   - Availability fees = operating income
+
+3. **Growth Optionality:**
+   - Credit activation = surge in revenue/production
+   - Dual-use = civiele + militaire markets
+
+**Investor pitch:**
+```
+Base case (peacetime):
+  - €1.4M/jaar availability fees
+  - €18.25M/jaar usage fees
+  - Total: €19.65M/jaar
+
+Surge case (wartime):
+  - Activate €50M credits
+  - New availability fees: €14.25M/jaar
+  - Increased usage: €50M+/jaar
+  - Total: €64.25M+/jaar
+```
+
+---
+
+**Next:** [07 — Kapitaalmarkt (Zuidas)](./kapitaalmarkt-zuidas)

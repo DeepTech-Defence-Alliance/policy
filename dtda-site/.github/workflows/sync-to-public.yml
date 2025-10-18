@@ -1,0 +1,60 @@
+name: Sync to Public Repo
+
+# This workflow syncs content from a PRIVATE repo to the PUBLIC org repo
+# Use this if you set up: Personal Private Repo → Org Public Repo
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'public/**'
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout private repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure git
+        run: |
+          git config user.name "DTDA Bot"
+          git config user.email "noreply@deeptech-defence.org"
+
+      - name: Clone public repo
+        env:
+          PUBLIC_TOKEN: ${{ secrets.PUBLIC_REPO_TOKEN }}
+        run: |
+          git clone https://x-access-token:${PUBLIC_TOKEN}@github.com/DeepTech-Defence-Alliance/policy.git public-repo
+
+      - name: Sync dtda-site to public repo
+        run: |
+          # Remove old content in public repo
+          rm -rf public-repo/dtda-site
+
+          # Copy from private repo's public folder
+          cp -r public/dtda-site public-repo/dtda-site
+
+          cd public-repo
+
+          # Commit and push if there are changes
+          git add .
+          if git diff-index --quiet HEAD --; then
+            echo "No changes to sync"
+          else
+            git commit -m "Sync from private repo [automated]
+
+Updated: $(date -u +'%Y-%m-%d %H:%M:%S UTC')
+Source: Private drafts repo"
+            git push
+          fi
+
+      - name: Summary
+        run: |
+          echo "✅ Sync completed"
+          echo "Public repo: https://github.com/DeepTech-Defence-Alliance/policy"
+          echo "Website: https://deeptech-defence-alliance.github.io/policy/"

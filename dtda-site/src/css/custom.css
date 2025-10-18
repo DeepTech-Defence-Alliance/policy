@@ -1,0 +1,160 @@
+/**
+ * DTDA — Effects & Surge
+ * Military Industrial Policy Documentation
+ * TLP:WHITE
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
+:root {
+  /* Typography */
+  --ifm-font-family-base: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --ifm-heading-font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --ifm-font-size-base: 16px;
+  --ifm-line-height-base: 1.65;
+
+  /* Military/Defense Color Scheme */
+  --ifm-color-primary: #1e3a5f;
+  --ifm-color-primary-dark: #1a3352;
+  --ifm-color-primary-darker: #18304d;
+  --ifm-color-primary-darkest: #14273f;
+  --ifm-color-primary-light: #22416c;
+  --ifm-color-primary-lighter: #244471;
+  --ifm-color-primary-lightest: #2d5280;
+
+  /* Semantic Colors */
+  --color-ok: #16a34a;
+  --color-warn: #f59e0b;
+  --color-bad: #ef4444;
+  --color-concept: #3b82f6;
+  --color-vastgesteld: #16a34a;
+  --color-verouderd: #9ca3af;
+
+  --ifm-code-font-size: 90%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #4a7ba7;
+  --ifm-color-primary-dark: #3d6a93;
+  --ifm-color-primary-darker: #38638a;
+  --ifm-color-primary-darkest: #2e5271;
+  --ifm-color-primary-light: #578cbb;
+  --ifm-color-primary-lighter: #5c93c4;
+  --ifm-color-primary-lightest: #70a3cf;
+
+  --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.1);
+}
+
+/* Typography Enhancement */
+body {
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1, 'ss01' 1;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 2.5rem;
+  line-height: 1.2;
+}
+
+h2 {
+  font-weight: 600;
+  font-size: 2rem;
+  margin-top: 2rem;
+}
+
+h3 {
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+/* Table Styling */
+table {
+  font-size: 0.95rem;
+  width: 100%;
+  margin: 1.5rem 0;
+}
+
+table th {
+  background-color: var(--ifm-color-primary);
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  text-align: left;
+}
+
+table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--ifm-table-border-color);
+}
+
+table tbody tr:hover {
+  background-color: var(--ifm-hover-overlay);
+}
+
+/* Mermaid Diagram Styling */
+.mermaid {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+/* Print Styles */
+@media print {
+  @page {
+    margin: 2cm;
+    size: A4;
+  }
+
+  body {
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+
+  h1 {
+    font-size: 20pt;
+    page-break-after: avoid;
+  }
+
+  h2 {
+    font-size: 16pt;
+    page-break-after: avoid;
+  }
+
+  h3 {
+    font-size: 14pt;
+    page-break-after: avoid;
+  }
+
+  table, figure {
+    page-break-inside: avoid;
+  }
+
+  nav, footer, .navbar {
+    display: none !important;
+  }
+}
+
+/* Admonitions */
+.admonition {
+  margin: 1.5rem 0;
+  border-radius: 4px;
+}
+
+/* Links */
+a {
+  font-weight: 500;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}

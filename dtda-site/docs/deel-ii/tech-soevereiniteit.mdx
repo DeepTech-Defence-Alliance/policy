@@ -1,0 +1,173 @@
+---
+id: tech-soevereiniteit
+title: 12 — Tech-soevereiniteit
+sidebar_label: 12 — Tech-soevereiniteit
+---
+
+import StatusBanner from '@site/src/components/StatusBanner';
+
+<StatusBanner status="concept" versie="0.9" datum="2025-10" />
+
+# Tech-soevereiniteit — Open Architectures, Not Protectionism
+
+## Misinterpreting Strategic Autonomy
+
+**Common mistake:** Strategic autonomy = "alles zelf maken"
+
+**Correct:** Strategic autonomy = **geen vendor lock-in**, open ecosystems, supply chain resilience.
+
+---
+
+## Strategic Autonomy ≠ Protectionism
+
+### What Strategic Autonomy IS
+
+✅ **Open interfaces** — NATO STANAGs, open APIs, published standards
+✅ **Multi-vendor ecosystems** — geen single supplier dependency
+✅ **Source transparency** — critical code auditable
+✅ **Alternative suppliers** — Tier-2 visibility, pre-qualified backups
+✅ **Interoperability** — seamless integration across JEF
+
+### What Strategic Autonomy IS NOT
+
+❌ **"Nederlandse/Europese componenten verplicht"** — creates vendor lock-in
+❌ **Protectionisme** — smaller market, slower innovation
+❌ **Alles zelf ontwikkelen** — inefficient, expensive
+❌ **Nationale kampioenen beschermen** — prevents competition
+
+---
+
+## Open Architectures
+
+**Example: Sensor Module**
+
+```
+Modular Sensor Interface (MSI) — Open Standard
+├─ Power: MIL-STD-1275 (28V DC)
+├─ Data: Ethernet (IEEE 802.3) + STANAG 4677
+├─ Mechanical: Standard gimbal mount (published CAD)
+└─ Software API: OpenAPI 3.0 spec
+
+Vendor Options:
+├─ Vendor A (NL): EO/IR sensor €50K
+├─ Vendor B (SE): Radar €70K
+├─ Vendor C (UK): Hyperspectral €90K
+└─ Buyer: Can switch vendors without platform redesign
+```
+
+**Benefits:**
+- **No vendor lock-in** — switch suppliers without reengineering
+- **Competition** — vendors compete on performance/price
+- **Innovation** — new vendors can enter market
+- **JEF interop** — sensors work across platforms/nations
+
+---
+
+## Supply Chain Resilience
+
+**Traditional (black box):**
+```
+Prime → Tier-1 → ??? → ???
+No visibility beyond Tier-1
+Single points of failure (SPOF)
+```
+
+**Strategic Autonomy (transparent):**
+```
+Prime → Tier-1 → Tier-2 → Tier-3
+Full visibility, risk scoring
+Alternative suppliers pre-qualified
+Digital twin tracking
+```
+
+**Example: Semiconductor**
+```
+Component: Edge AI processor
+├─ Primary: NXP (NL) → TSMC (TW fab) ⚠️ geopolitical risk
+├─ Alternative: Intel (EU/US fabs) → lower risk
+└─ Mitigation: Pre-qualified both, maintain relationships
+```
+
+---
+
+## Vendor Lock-in Avoidance
+
+### How Vendor Lock-in Happens
+
+**Traditional procurement:**
+1. Buy platform from Vendor X
+2. Vendor X uses proprietary interfaces
+3. Upgrades/spares only from Vendor X
+4. **Result:** Captive customer, no competition
+
+**Example (hypothetical):**
+```
+Buy 100 drones from VendorCorp
+├─ Proprietary datalink (encrypted, no docs)
+├─ Custom battery connector
+├─ Closed-source autopilot
+└─ Result: All future upgrades/spares from VendorCorp only
+```
+
+### How to Prevent
+
+**Ecosysteem-SLA requirements:**
+1. **Open interfaces** mandatory
+2. **Published APIs** (OpenAPI specs)
+3. **Source code transparency** (critical modules)
+4. **Interoperability testing** (multi-vendor certification)
+
+**Example (correct):**
+```
+Buy ISR coverage (not platforms) via ecosysteem-SLA
+├─ Prime integrator coordinates vendors
+├─ All interfaces = open (STANAG, IEEE)
+├─ Source code escrowed (critical modules)
+└─ Result: Can switch vendors per module, no lock-in
+```
+
+---
+
+## JEF Interoperability
+
+**Goal:** Seamless integration across JEF nations.
+
+**How:**
+- **NATO STANAGs** (4677, 7085, etc.)
+- **Open protocols** (Ethernet, RF mesh)
+- **Common data formats** (MIL-STD-2525, CoT)
+- **Multi-vendor certification** (test interop before deploy)
+
+**Example: Tactical Mesh Network**
+```
+UK drone ↔ NL ground station ↔ SE command post
+├─ All use STANAG 4677 (Tactical Data Link)
+├─ Interoperable RF waveforms
+├─ Common data format (MIL-STD-2525 symbology)
+└─ Result: Seamless info sharing across JEF
+```
+
+---
+
+## Kapitaalmarkt Implications
+
+**Why investors care:**
+
+✅ **Larger TAM** — not locked to single customer
+✅ **Less risk** — no vendor lock-in dependency
+✅ **More growth** — multi-vendor ecosystem scales faster
+
+**Example:**
+```
+SensorTech BV (hypothetical):
+├─ Open interface sensors
+├─ Works with 5 platform vendors (NL, UK, SE, FI, NO)
+├─ TAM: €500M (all JEF) vs €100M (NL only)
+└─ Investor thesis: Larger market, strategic autonomy alignment
+```
+
+---
+
+**End of Deel II**
+
+**Next:** [Bijlagen — Definities](../bijlagen/definities)

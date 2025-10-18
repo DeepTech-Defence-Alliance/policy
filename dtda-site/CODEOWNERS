@@ -1,0 +1,21 @@
+# CODEOWNERS — DTDA Policy Documentation
+# All changes require review from designated owners
+
+# Default owners for everything
+* @DeepTech-Defence-Alliance/policy-owners
+
+# Deel I — Strategic content
+/docs/deel-i/ @DeepTech-Defence-Alliance/strategy-team
+
+# Deel II — Technical transformation
+/docs/deel-ii/ @DeepTech-Defence-Alliance/tech-team
+
+# Components — Require tech review
+/src/components/ @DeepTech-Defence-Alliance/developers
+
+# CI/CD workflows — Require devops approval
+/.github/workflows/ @DeepTech-Defence-Alliance/devops
+
+# Governance files
+/CODEOWNERS @DeepTech-Defence-Alliance/governance
+/README.md @DeepTech-Defence-Alliance/governance

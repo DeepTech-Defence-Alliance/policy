@@ -1,0 +1,353 @@
+---
+id: matrix-oud-nieuw
+title: 08 — Matrix Oud → Nieuw
+sidebar_label: 08 — Matrix Oud → Nieuw
+---
+
+import StatusBanner from '@site/src/components/StatusBanner';
+import Matrix from '@site/src/components/Matrix';
+
+<StatusBanner status="concept" versie="0.9" datum="2025-10" />
+
+# Matrix: Oud Denken → Nieuw Denken
+
+## Transformatie Framework
+
+Dit hoofdstuk presenteert de **transformatie** van oud naar nieuw denken over militair industriebeleid. Het is het **negatieve verhaal** — wat we moeten **afbouwen** en **vervangen**.
+
+<Matrix rows={[
+  ['Doel & succesmaat', 'Platforms tellen ("hoeveel drones?")', 'Effect & surge capacity ("welk effect, hoe snel opschalen?")'],
+  ['Lucht/zee-logica', 'BVLOS/VLOS/HLOS (piloten-framing)', 'SLOS-DAA / ELOS-COOP / GEO-ASSURED / PROC-SEG (prestatie-gebaseerd)'],
+  ['Procurement', 'Koop X platforms voor €Y', 'Ecosysteem-SLA: availability, MTTR, time-to-surge'],
+  ['Financiering', 'Overheidsbudget, langzame cycli', 'Kapitaalmarkt (Zuidas), capacity credits, availability fees'],
+  ['Tech-soevereiniteit', 'Alles zelf maken (protectionisme)', 'Open architectures, multi-vendor, geen vendor lock-in'],
+  ['Supply chain', 'Zwarte doos, single points of failure', 'Tier-2 visibility, alternative suppliers, digital twins'],
+  ['Prioritering', 'Democratisch ("iedereen gelijk")', 'L1-L4: Fast movers → slow/test → civil/SAR → drones'],
+  ['Industrial base', 'Nationale kampioenen, silos', 'JEF ecosysteem, cross-border specialisatie'],
+  ['Tijdshorizon', '5-10 jaar procurement cycles', 'Iteraties per kwartaal, time-to-surge ≤ 6 weken'],
+  ['Dual-use', 'Gescheiden (civiel vs. militair)', 'Geïntegreerd (Effects Tech Layer cross-domain)'],
+]} />
+
+---
+
+## Domein-specifieke Transformaties
+
+### 1. Doel & Succesmaat
+
+#### Oud Frame
+**"Hoeveel platforms hebben we?"**
+
+Focus op **inputs** (aantal drones, tanks, schepen) in plaats van **outputs** (effecten bereikt).
+
+**Problems:**
+- Geen relatie tussen aantallen en operationele effectiviteit
+- Peacetime inventory ≠ wartime needs
+- Geen incentive voor efficiëntie
+
+**Example:**
+> "Nederland heeft 100 drones."
+> **Maar:** Wat is het effect? Hoeveel km² coverage? Hoe snel kunnen we opschalen naar 1000?
+
+#### Nieuw Frame
+**"Welk effect willen we, en hoe snel kunnen we opschalen?"**
+
+Focus op **effects** (ISR coverage, area denial) en **surge capacity** (time-to-surge).
+
+**KPI's:**
+- ISR coverage: km², resolution, refresh rate
+- Area denial: km², response time
+- Time-to-surge: ≤ 6 weken voor 10x productie
+
+**Example:**
+> "We hebben **24/7 ISR coverage** over **10.000 km²** Baltic met **≤ 6 weken surge** naar 10x capacity."
+
+---
+
+### 2. Lucht/zee-logica
+
+#### Oud Frame
+**BVLOS / VLOS / HLOS** (piloten-framing)
+
+Dit frame komt uit **bemande luchtvaart** en wordt gedomineerd door **piloten** die hun monopolie beschermen.
+
+**Problems:**
+- **BVLOS** (Beyond Visual Line of Sight) = irrelevant voor militair (alles is "beyond")
+- **VLOS** (Visual Line of Sight) = irrelevant voor autonomous systems
+- **HLOS** (Human Line of Sight) = onzinterm, geframed door piloten-lobby
+- Focus op **zichtbaarheid** in plaats van **prestatie**
+
+**Waarom fout?**
+Deze termen zijn bedacht door de **gevestigde orde** (piloten, luchtverkeersleiding) om **nieuwe tech te beperken** met oude regels.
+
+#### Nieuw Frame
+**Prestatie-gebaseerde modi:**
+
+1. **SLOS-DAA** (Sensor Line of Sight + Detect & Avoid)
+2. **ELOS-COOP** (Electronic Line of Sight, cooperative)
+3. **GEO-ASSURED** (Geografisch/temporeel geborgd)
+4. **PROC-SEG** (Procedureel gesegregeerd)
+
+**Focus:** Wat het systeem **kan** (sensor range, cooperative awareness) in plaats van waar de **piloot** is.
+
+**See:** [09 — Prestatie-modi](./prestatie-modi) voor details.
+
+---
+
+### 3. Procurement
+
+#### Oud Frame
+**"Koop X platforms voor €Y"**
+
+Traditional procurement:
+- Lange cycli (5-10 jaar)
+- Fixed spec (geen iteratie)
+- Vendor lock-in (proprietary)
+- Betaal voor platforms, niet effects
+
+#### Nieuw Frame
+**Ecosysteem-SLA's: Availability, MTTR, Time-to-surge**
+
+Outcome-based contracts:
+- Betaal voor **effects** + **paraatheid**
+- **Availability fees** (surge insurance)
+- **Capacity credits** (prepaid productie)
+- **Iteratiesnelheid** (updates per kwartaal)
+
+**Example:**
+```
+Oud: Koop 100 drones voor €5M
+Nieuw: Koop 24/7 ISR coverage met ≥95% availability,
+       ≤4u MTTR, ≤6 weken surge, voor €20M/jaar
+```
+
+---
+
+### 4. Financiering
+
+#### Oud Frame
+**Overheidsbudget, langzame cycli**
+
+Problemen:
+- Beperkte budgetten
+- Multi-year appropriations (rigide)
+- Geen toegang tot private capital
+- Export credit agencies (ITAR restricties)
+
+#### Nieuw Frame
+**Kapitaalmarkt (Zuidas), capacity credits, availability fees**
+
+Dual-use tech krijgt toegang tot **capital markets**:
+- IPO (Euronext)
+- Private equity
+- Venture capital
+
+**Why?**
+- Dual revenue (civil + military)
+- Larger TAM
+- Strategic importance (economic security)
+
+**See:** [07 — Kapitaalmarkt Zuidas](../deel-i/kapitaalmarkt-zuidas)
+
+---
+
+### 5. Tech-soevereiniteit
+
+#### Oud Frame
+**"Alles zelf maken" (protectionisme)**
+
+Misinterpretatie van strategic autonomy:
+- Nederlandse/Europese componenten verplicht
+- Protectionistische maatregelen
+- Vendor lock-in (nationale kampioenen)
+
+**Result:** Duurder, trager, minder innovatie.
+
+#### Nieuw Frame
+**Open architectures, multi-vendor, geen vendor lock-in**
+
+**Strategic autonomy ≠ alles zelf maken.**
+
+Strategic autonomy betekent:
+- ✅ **Open interfaces** (NATO STANAG, open APIs)
+- ✅ **Multi-vendor** ecosystems (geen lock-in)
+- ✅ **Source transparency** waar kritiek
+- ✅ **Alternative suppliers** (supply chain resilience)
+- ❌ **Niet:** Alles zelf ontwikkelen
+
+**Example:**
+```
+Sensor module:
+├─ Interface: Open API (NATO STANAG 4677)
+├─ Vendors: NL (Thales), SE (Saab), UK (Leonardo)
+└─ Buyer freedom: Switch vendor zonder platform redesign
+```
+
+---
+
+### 6. Supply Chain
+
+#### Oud Frame
+**"Zwarte doos, single points of failure"**
+
+Huidige supply chains:
+- Geen visibility voorbij Tier-1
+- Geographic concentration (Taiwan semiconductors)
+- No alternative suppliers
+- Opaque lead times
+
+#### Nieuw Frame
+**Tier-2 visibility, alternative suppliers, digital twins**
+
+**Supply chain transparency:**
+- Digital twins (track components)
+- Tier-2/Tier-3 visibility
+- Risk scoring (geopolitical, climate)
+- Alternative suppliers pre-qualified
+
+**Example:**
+```
+Edge AI processor:
+├─ Primary: NXP (NL) — TSMC (TW) fab ⚠️ geopolitical risk
+├─ Alternative: Intel (US/EU fabs) — lower risk
+└─ Lead time: 12 weken (primary), 16 weken (alternative)
+```
+
+---
+
+### 7. Prioritering
+
+#### Oud Frame
+**"Democratisch — iedereen gelijk"**
+
+Luchtruim wordt behandeld alsof **alle gebruikers gelijk** zijn:
+- Hobbyisten
+- Commerciële drones
+- Militaire fast movers
+
+**Result:** Gridlock, niemand krijgt priority.
+
+#### Nieuw Frame
+**L1-L4 Prioritering: Fast movers eerst**
+
+**Hierarchy:**
+1. **L1:** Fast movers (F-35, Eurofighter) — altijd priority
+2. **L2:** Slow movers + test (helikopters, prototypes)
+3. **L3:** Civil + SAR (ambulance, search & rescue)
+4. **L4:** Drones (commercial, recreational)
+
+**See:** [10 — L1-L4 Prioritering](./l1-l4-prioritering)
+
+---
+
+### 8. Industrial Base
+
+#### Oud Frame
+**"Nationale kampioenen, silo's"**
+
+Elk land beschermt eigen defense industry:
+- NL: Thales, Damen
+- SE: Saab
+- UK: BAE, Leonardo
+- FR: Dassault, Naval Group
+
+**Result:** Duplication, vendor lock-in, geen schaalvoordeel.
+
+#### Nieuw Frame
+**JEF ecosysteem, cross-border specialisatie**
+
+**Specialisatie per land:**
+
+| Land | Specialisatie |
+|------|---------------|
+| UK | Sensors, AI, satcom |
+| NL | Semiconductors, photonics, Zuidas finance |
+| SE | Defense platforms, radar |
+| FI | Drones, autonomy |
+| NO | Energy, maritime |
+| DK | Integration, logistics |
+
+**Result:** Economies of scale, interoperability, no vendor lock-in.
+
+---
+
+### 9. Tijdshorizon
+
+#### Oud Frame
+**"5-10 jaar procurement cycles"**
+
+Traditional timelines:
+- Requirements: 1-2 jaar
+- Design: 2-3 jaar
+- Procurement: 1-2 jaar
+- Delivery: 2-3 jaar
+- **Total:** 6-10 jaar
+
+**By the time delivery:** Tech is **verouderd**.
+
+#### Nieuw Frame
+**Iteraties per kwartaal, time-to-surge ≤ 6 weken**
+
+**Agile approach:**
+- Software updates: **maandelijks**
+- Hardware iterations: **per kwartaal**
+- Surge productie: **≤ 6 weken**
+
+**Example:**
+```
+Q1: Deploy baseline ISR (EO sensors)
+Q2: Add IR sensors (night capability)
+Q3: AI-edge upgrade (object detection)
+Q4: Mesh networking (swarm coordination)
+```
+
+---
+
+### 10. Dual-use
+
+#### Oud Frame
+**"Gescheiden (civiel vs. militair)"**
+
+Civiele en militaire tech worden als **aparte werelden** behandeld:
+- Verschillende standards
+- Verschillende supply chains
+- Verschillende financiering
+
+**Result:** Miss opportunities voor schaal + innovatie.
+
+#### Nieuw Frame
+**Geïntegreerd (Effects Tech Layer cross-domain)**
+
+**Effects Tech Layer** werkt cross-domain:
+- **Comms:** 5G private (civil) = tactical mesh (military)
+- **Sensors:** Agriculture mapping (civil) = ISR (military)
+- **Edge AI:** Autonomous cars (civil) = drone autonomy (military)
+- **Batteries:** EVs (civil) = drone endurance (military)
+
+**Result:** Larger TAM, faster innovation, economies of scale.
+
+---
+
+## Transitie Strategie
+
+### Hoe van Oud naar Nieuw?
+
+**Gefaseerde aanpak:**
+
+#### Fase 1: Pilot Projects (Year 1)
+- 1-2 ecosysteem-SLA's (bv. Baltic ISR)
+- Capacity credits experiment (€50M)
+- Open architecture demonstrators
+
+#### Fase 2: Scale (Year 2-3)
+- JEF-wide rollout ecosysteem-SLA's
+- Zuidas dual-use investment fund (€500M)
+- Prestatie-modi framework adoption
+
+#### Fase 3: Institutionaliseren (Year 4+)
+- Default = ecosysteem-SLA's (oud model exception)
+- Zuidas dual-use index (Euronext)
+- JEF supply chain transparency platform
+
+---
+
+**Next:** [09 — DUOS Kritiek](./duos-kritiek)

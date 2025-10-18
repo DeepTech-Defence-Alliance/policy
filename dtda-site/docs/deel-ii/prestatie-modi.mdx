@@ -1,0 +1,134 @@
+---
+id: prestatie-modi
+title: 10 — Prestatie-gebaseerde Modi
+sidebar_label: 10 — Prestatie-modi
+---
+
+import StatusBanner from '@site/src/components/StatusBanner';
+
+<StatusBanner status="concept" versie="0.9" datum="2025-10" />
+
+# Prestatie-gebaseerde Modi
+
+**Replacing BVLOS/VLOS/HLOS with performance-based operational modes.**
+
+## We noemen het geen BVLOS meer
+
+**BVLOS/VLOS/HLOS** zijn termen uit de **bemande luchtvaart** die niet passen bij autonome systemen. Ze focussen op **menselijke zichtbaarheid** in plaats van **system capabilities**.
+
+---
+
+## Vier Prestatie-modi
+
+### 1. SLOS-DAA (Sensor Line of Sight + Detect & Avoid)
+
+**Concept:** Systeem heeft sensor coverage (niet menselijke ogen) + DAA capability.
+
+**Sensors:**
+- EO/IR cameras (10+ km range)
+- Radar (5-20 km)
+- Acoustic (rotor sound detection)
+
+**DAA (Detect & Avoid):**
+- Cooperative (ADS-B, transponders)
+- Non-cooperative (radar, visual AI)
+- Automatic collision avoidance
+
+**Use cases:**
+- ISR missions (persistent surveillance)
+- Maritime patrol (USV, ASW)
+- Border monitoring
+
+---
+
+### 2. ELOS-COOP (Electronic Line of Sight, Cooperative)
+
+**Concept:** Datalink maintained + cooperative awareness with other aircraft.
+
+**Datalink:**
+- RF mesh (tactical)
+- LEO satcom (beyond-horizon)
+- 5G/LTE (infrastructure-based)
+
+**Cooperative:**
+- ADS-B transponder
+- Mode S
+- Mesh networking (swarm coordination)
+
+**Use cases:**
+- Controlled airspace operations
+- Swarm coordination
+- Joint ops (manned + unmanned)
+
+---
+
+### 3. GEO-ASSURED (Geografisch/Temporeel Geborgd)
+
+**Concept:** Geographic and/or temporal separation ensures safety.
+
+**Geographic:**
+- Restricted airspace (military ranges)
+- Segregated corridors (drone highways)
+- Altitude blocks (below/above manned traffic)
+
+**Temporal:**
+- Time-based separation (NOTAMs)
+- Scheduled operations windows
+- Dynamic airspace allocation
+
+**Use cases:**
+- Training ranges
+- Test & evaluation
+- Offshore operations (oil/gas, wind)
+
+---
+
+### 4. PROC-SEG (Procedureel Gesegregeerd)
+
+**Concept:** Procedural separation like IFR, via ATC coordination.
+
+**Procedures:**
+- Flight plans filed (like IFR)
+- ATC clearances
+- Separation standards (3-5 NM horizontal, 1000 ft vertical)
+
+**Integration:**
+- UTM (UAS Traffic Management)
+- Existing ATC systems
+- Deconfliction with manned traffic
+
+**Use cases:**
+- Long-range logistics (cargo drones)
+- Medical transport (SAR, ambulance)
+- Infrastructure inspection (power lines, pipelines)
+
+---
+
+## Comparison: Old vs New
+
+| Aspect | BVLOS/VLOS (Old) | Prestatie-modi (New) |
+|--------|------------------|---------------------|
+| **Focus** | Human visual capability | System sensor capability |
+| **Framing** | Pilots' perspective | Tech performance |
+| **Safety basis** | "Pilot can see" | Sensor + DAA + procedures |
+| **Regulation** | Restrictive (preserve pilot monopoly) | Performance-based |
+| **Innovation** | Slow (regulatory lag) | Fast (tech-driven standards) |
+
+---
+
+## Military Relevance
+
+**Voor militaire ops zijn BVLOS/VLOS irrelevant:**
+- Combat ranges exceed visual limits
+- All ops are "beyond visual" by definition
+- Focus on **sensor performance** + **cooperative awareness**
+
+**Prestatie-modi zijn direct applicable:**
+- **SLOS-DAA:** ISR, strike missions
+- **ELOS-COOP:** Swarm ops, joint missions
+- **GEO-ASSURED:** Training, test ranges
+- **PROC-SEG:** Strategic transport, logistics
+
+---
+
+**Next:** [11 — L1-L4 Prioritering](./l1-l4-prioritering)
