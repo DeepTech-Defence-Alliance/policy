@@ -14,15 +14,16 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: 'Deel I — Doelbeeld (JEF-geankerd)',
+      label: 'Deel I — Ecosysteem-indeling',
       collapsible: true,
       collapsed: false,
       items: [
         'deel-i/missie-principes',
         'deel-i/jef-baltics-routes',
+        'deel-i/ecosysteem-elementen',
         'deel-i/effects-tech-layer',
-        'deel-i/surge-capacity',
         'deel-i/ecosysteem-slas',
+        'deel-i/surge-capacity',
         'deel-i/capacity-credits',
         'deel-i/kapitaalmarkt-zuidas',
       ],
