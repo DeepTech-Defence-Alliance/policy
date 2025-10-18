@@ -27,12 +27,25 @@ const config: Config = {
 
   onBrokenLinks: 'warn',
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
+  // Bilingual support: Dutch (default) and English
+  // Enables JEF partners and international audience to access policy templates
   i18n: {
-    defaultLocale: 'nl',
-    locales: ['nl'],
+    defaultLocale: 'en',
+    locales: ['en', 'nl'],
+    localeConfigs: {
+      en: {
+        label: 'English',
+        direction: 'ltr',
+        htmlLang: 'en-IE',
+        calendar: 'gregory',
+      },
+      nl: {
+        label: 'Nederlands',
+        direction: 'ltr',
+        htmlLang: 'nl-NL',
+        calendar: 'gregory',
+      },
+    },
   },
 
   markdown: {
