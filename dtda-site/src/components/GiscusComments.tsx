@@ -9,9 +9,9 @@ export default function GiscusComments(): JSX.Element {
     <Giscus
       id="comments"
       repo="DeepTech-Defence-Alliance/policy"
-      repoId="R_kgDONc8aYw"
-      category="Documentation Comments"
-      categoryId="DIC_kwDONc8aY84Cle7s"
+      repoId="R_kgDOQE0VwQ"
+      category="General"
+      categoryId="DIC_kwDOQE0Vwc4CwzGG"
       mapping="pathname"
       strict="0"
       reactionsEnabled="1"
