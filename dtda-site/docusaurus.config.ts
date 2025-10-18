@@ -59,8 +59,13 @@ const config: Config = {
   ],
 
   themeConfig: {
-    // Replace with your project's social card
-    image: 'img/logo.png',
+    // Social card for link previews (LinkedIn, Twitter, etc.)
+    image: 'img/dtda-social-card.jpg',
+    metadata: [
+      {name: 'keywords', content: 'defence, defense, industrial policy, DTDA, DeepTech, military, JEF, surge capacity, effects tech layer'},
+      {name: 'twitter:card', content: 'summary_large_image'},
+      {property: 'og:type', content: 'website'},
+    ],
     colorMode: {
       respectPrefersColorScheme: true,
     },
