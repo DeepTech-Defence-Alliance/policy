@@ -60,6 +60,55 @@ jobs:
 
           client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 
+          def improve_dutch(text, filename):
+              """Improve Dutch text by removing anglicisms and using proper Dutch terms"""
+
+              if text.strip().startswith('```') or len(text) < 50:
+                  return text
+
+              prompt = f"""Verbeter deze Nederlandse tekst door Engelse termen te vervangen met Nederlandse equivalenten.
+
+          Context: Dit is Nederlands defensiebeleid voor JEF-partners. Gebruik proper Nederlands, niet Denglisch.
+
+          Vervang anglicismen:
+          - "dual-use" → "tweeledig gebruik" of verwijder (het is een exportcategorie, geen businessmodel)
+          - "surge capacity" → "opschaalvermogen"
+          - "effects" → "effecten"
+          - "time-to-surge" → "opschaaltijd"
+          - "vendor lock-in" → "leveranciersbinding"
+          - "strategic autonomy" → "strategische autonomie"
+          - "outcome-based" → "resultaatgericht"
+
+          Behoud wel:
+          - Technische acroniemen: JEF, DUOS, SLOS-DAA, ELOS-COOP, GEO-ASSURED, PROC-SEG, ISR
+          - Eigennamen: Zuidas, Amsterdam, Nederland
+          - Markdown/MDX formatting
+          - YAML frontmatter
+
+          Nederlandse tekst:
+          {text}
+
+          Verbeterde Nederlandse tekst:"""
+
+              try:
+                  response = client.chat.completions.create(
+                      model="gpt-4",
+                      messages=[
+                          {"role": "system", "content": "Je bent een Nederlandse taalverbeteraar gespecialiseerd in defensiebeleid. Je vervangt anglicismen met correcte Nederlandse termen en behoudt markdown formatting perfect."},
+                          {"role": "user", "content": prompt}
+                      ],
+                      temperature=0.3,
+                      max_tokens=4000
+                  )
+
+                  improved = response.choices[0].message.content
+                  print(f"✓ Improved Dutch in {filename}")
+                  return improved
+
+              except Exception as e:
+                  print(f"✗ Failed to improve Dutch in {filename}: {e}")
+                  return text
+
           def translate_content(text, filename):
               """Translate Dutch content to English using GPT-4"""
 
@@ -104,8 +153,8 @@ jobs:
                   print(f"✗ Failed to translate {filename}: {e}")
                   return text
 
-          def process_docs(docs_dir, i18n_dir):
-              """Process all Dutch docs and create English translations"""
+          def process_docs(docs_dir, i18n_dir, improve_nl=True):
+              """Process all Dutch docs: improve NL and create English translations"""
 
               docs_path = Path(docs_dir)
               i18n_path = Path(i18n_dir) / 'en' / 'docusaurus-plugin-content-docs' / 'current'
@@ -117,21 +166,33 @@ jobs:
               # Create i18n structure
               i18n_path.mkdir(parents=True, exist_ok=True)
 
+              improved_files = []
+
               # Process all .mdx and .md files
               for doc_file in docs_path.rglob('*.mdx'):
                   relative_path = doc_file.relative_to(docs_path)
                   target_file = i18n_path / relative_path
 
-                  # Skip if English version is newer
-                  if target_file.exists() and target_file.stat().st_mtime > doc_file.stat().st_mtime:
-                      print(f"⊘ Skipping {relative_path} (English is up-to-date)")
-                      continue
-
                   # Read Dutch content
                   with open(doc_file, 'r', encoding='utf-8') as f:
                       dutch_content = f.read()
 
-                  # Translate
+                  # Step 1: Improve Dutch (remove anglicisms)
+                  if improve_nl:
+                      improved_dutch = improve_dutch(dutch_content, str(relative_path))
+                      if improved_dutch != dutch_content:
+                          with open(doc_file, 'w', encoding='utf-8') as f:
+                              f.write(improved_dutch)
+                          improved_files.append(str(doc_file))
+                          print(f"✓ Improved Dutch: {relative_path}")
+                          dutch_content = improved_dutch
+
+                  # Step 2: Translate to English
+                  # Skip if English version is newer
+                  if target_file.exists() and target_file.stat().st_mtime > doc_file.stat().st_mtime:
+                      print(f"⊘ Skipping translation {relative_path} (English is up-to-date)")
+                      continue
+
                   english_content = translate_content(dutch_content, str(relative_path))
 
                   # Write English version
@@ -139,7 +200,9 @@ jobs:
                   with open(target_file, 'w', encoding='utf-8') as f:
                       f.write(english_content)
 
-                  print(f"✓ Created {target_file}")
+                  print(f"✓ Translated {relative_path}")
+
+              return improved_files
 
           if __name__ == '__main__':
               if not os.getenv('OPENAI_API_KEY'):
@@ -149,8 +212,12 @@ jobs:
               docs_dir = 'dtda-site/docs'
               i18n_dir = 'dtda-site/i18n'
 
-              print("🌍 Starting auto-translation...")
-              process_docs(docs_dir, i18n_dir)
+              print("🇳🇱 Step 1: Improving Dutch (removing anglicisms)...")
+              print("🌍 Step 2: Translating to English...")
+              improved_files = process_docs(docs_dir, i18n_dir, improve_nl=True)
+
+              if improved_files:
+                  print(f"✅ Improved {len(improved_files)} Dutch files")
               print("✅ Translation complete")
           EOF
 
@@ -176,10 +243,16 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add dtda-site/i18n
-          git commit -m "Auto-translate: Update English documentation
+          git add dtda-site/docs dtda-site/i18n
+          git commit -m "Auto-translate: Improve Dutch + Update English
 
-          Generated English translations from Dutch source files using GPT-4.
+          Step 1: Improved Dutch (removed anglicisms, proper Nederlands)
+          Step 2: Generated English translations from improved Dutch
+
+          Changes:
+          - Replaced anglicisms with Dutch terms
+          - Translated to English (en-IE)
+          - Maintained all markdown/MDX formatting
 
           🤖 Automated translation via GitHub Actions"
 

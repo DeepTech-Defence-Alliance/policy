@@ -6,9 +6,11 @@ The DTDA policy site now has automatic Dutch → English translation via GitHub 
 
 1. **Push Dutch content** to `dtda-site/docs/` (any `.mdx` or `.md` file)
 2. **GitHub Actions triggers** the translation workflow
-3. **GPT-4 translates** to English, maintaining all markdown/MDX formatting
-4. **English version saved** to `dtda-site/i18n/en/docusaurus-plugin-content-docs/current/`
-5. **Auto-commits** back to the repository
+3. **Step 1: Improve Dutch** — GPT-4 removes anglicisms, uses proper Nederlands
+4. **Step 2: Translate to English** — GPT-4 translates improved Dutch to English
+5. **Auto-commits** both improved Dutch and English back to repository
+
+**Result:** Both languages are high-quality, proper terminology (no Denglisch!)
 
 ## Setup Requirements
 
@@ -30,7 +32,21 @@ Add a new secret:
 
 ## Translation Quality
 
-The workflow uses **GPT-4** with specific instructions to:
+### Step 1: Dutch Improvement
+
+The workflow **first improves Dutch** by removing anglicisms:
+
+- ❌ "dual-use" → ✅ "tweeledig gebruik" (or remove, it's an export category)
+- ❌ "surge capacity" → ✅ "opschaalvermogen"
+- ❌ "vendor lock-in" → ✅ "leveranciersbinding"
+- ❌ "outcome-based" → ✅ "resultaatgericht"
+- ❌ "strategic autonomy" → ✅ "strategische autonomie"
+
+**Behouden:** JEF, DUOS, SLOS-DAA (technical acronyms), Zuidas, Amsterdam (proper nouns)
+
+### Step 2: English Translation
+
+The workflow **then translates** improved Dutch to English:
 
 - ✅ Maintain all markdown formatting (headers, lists, tables, code blocks)
 - ✅ Preserve MDX imports and React components
