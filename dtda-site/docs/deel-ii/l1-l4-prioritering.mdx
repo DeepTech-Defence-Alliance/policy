@@ -22,9 +22,13 @@ import StatusBanner from '@site/src/components/StatusBanner';
 ```mermaid
 graph TB
     A[Airspace] --> B[L1 - Fast Movers<br/>F-35, Eurofighter]
-    A --> C[L2 - Slow/Test<br/>Helicopters, Prototypes]
+    A --> C[L2 - Slow/Test + Military Drones<br/>Helicopters, ISR/Strike drones]
     A --> D[L3 - Civil/SAR<br/>Ambulance, Police]
-    A --> E[L4 - Drones<br/>Commercial, Recreational]
+    A --> E[L4 - Civil Drones<br/>Commercial, Recreational]
+
+    C --> C1[L2-A: Strike/ISR]
+    C --> C2[L2-B: Logistics]
+    C --> C3[L2-C: Test]
 
     B --> F[Priority Order]
     C --> F
@@ -33,6 +37,9 @@ graph TB
 
     style B fill:#ef4444,stroke:#dc2626,color:#fff
     style C fill:#f59e0b,stroke:#d97706,color:#fff
+    style C1 fill:#fb923c,stroke:#ea580c,color:#fff
+    style C2 fill:#fbbf24,stroke:#f59e0b,color:#fff
+    style C3 fill:#fcd34d,stroke:#fbbf24,color:#000
     style D fill:#3b82f6,stroke:#2563eb,color:#fff
     style E fill:#9ca3af,stroke:#6b7280,color:#fff
 ```
@@ -48,16 +55,22 @@ graph TB
 - Safety (high kinetic energy)
 - Training necessity (low-level, high-speed)
 
-### L2 — Slow Movers + Test
-**Aircraft:** Helicopters, transport, test platforms
+### L2 — Slow Movers + Test + Military Drones
+**Aircraft:** Helicopters, transport, test platforms, **military drones**
 **Priority:** **High** — yield to L1 only
 **Speed:** Less than 200 knots
 **Altitude:** Typically less than 10,000 ft
 
 **Includes:**
 - Military helicopters (SAR, transport)
+- **Military drones (ISR, strike, logistics)**
 - Test platforms (new aircraft, prototypes)
 - Trainers (C-130, transports)
+
+**Within L2 — Drone Priority Sub-levels (managed by Airspace & Littoral Cell):**
+- **L2-A:** Strike/ISR drones (combat ops)
+- **L2-B:** Logistics/transport drones (surge ops)
+- **L2-C:** Test/prototype drones (R&D)
 
 ### L3 — Civil + SAR
 **Aircraft:** Ambulance, police, firefighting, commercial
@@ -71,13 +84,56 @@ graph TB
 - Search & Rescue
 - Commercial (cargo, inspection)
 
-### L4 — Drones
-**Aircraft:** Commercial drones, recreational UAVs
-**Priority:** **Low** — yield to all
+### L4 — Civil Drones
+**Aircraft:** Commercial drones, recreational UAVs, **civil test platforms**
+**Priority:** **Low** — yield to all (L1, L2, L3)
 **Speed:** Less than 100 knots
 **Altitude:** Less than 500 ft (typically)
 
+**Includes:**
+- Commercial delivery/inspection drones
+- Recreational UAVs
+- Civil test platforms (non-military R&D)
+
 **Default:** Lowest priority, must deconflict with all other traffic.
+
+**Note:** Military drones are **L2**, not L4. Civil drones yield to all levels.
+
+---
+
+## Airspace & Littoral Cell — Governance
+
+**Rol:** Beheert L2 drone-prioriteiten, publiceert AUP/UUP, geozone-API, NAVWARN.
+
+### L2 Drone Priority Management
+
+Binnen L2 beheert de **Airspace & Littoral Cell** de sub-prioriteiten:
+
+| Sub-level | Type | Priority binnen L2 | Use case |
+|-----------|------|-------------------|----------|
+| **L2-A** | Strike/ISR | Hoogste binnen L2 | Combat operations, QRA support |
+| **L2-B** | Logistics/Transport | Medium binnen L2 | Surge ops, supply chains |
+| **L2-C** | Test/Prototype | Laagste binnen L2 | R&D, trials, TEVV |
+
+**Deconfliction binnen L2:**
+- L2-C yields to L2-B, L2-A
+- L2-B yields to L2-A
+- Alle L2 yields to L1
+
+### Instrumenten
+
+1. **AUP/UUP (Airspace Use Plan / Updated UUP)** — Dagelijkse airspace allocation
+2. **Geozone-API** — Real-time geofencing data voor UTM
+3. **NAVWARN** — Navigational warnings voor maritime/littoral
+4. **Dynamic NOTAMs** — Temporary restrictions bij escalatie
+
+### KPI's
+
+- **Time-to-activate L2-A/L2-B** — ≤ 5 min
+- **Geofence compliance** — ≥ 99,5%
+- **L1/L2 conflicts** — 0 (zero tolerance)
+
+**Zie ook:** [Ecosysteem-elementen → Test & Certificatie](/deel-i/ecosysteem-elementen#6-test--certificatie-veiligheid--prestatie)
 
 ---
 
