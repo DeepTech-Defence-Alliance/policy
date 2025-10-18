@@ -53,6 +53,17 @@ const sidebars: SidebarsConfig = {
         'bijlagen/literatuur',
       ],
     },
+    {
+      type: 'category',
+      label: 'Source Materials',
+      collapsible: true,
+      collapsed: true,
+      link: {
+        type: 'doc',
+        id: 'sources/index',
+      },
+      items: [],
+    },
   ],
 };
 

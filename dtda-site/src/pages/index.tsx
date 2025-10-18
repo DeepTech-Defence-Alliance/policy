@@ -19,7 +19,7 @@ function HomepageHeader() {
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
-            to="/">
+            to="/intro">
             Lees het beleid →
           </Link>
         </div>
@@ -74,13 +74,13 @@ function HomepageFeatures() {
               <div style={{marginTop: '2rem'}}>
                 <Link
                   className="button button--primary button--lg"
-                  to="/"
+                  to="/deel-i/missie-principes"
                   style={{marginRight: '1rem'}}>
                   Deel I — Doelbeeld
                 </Link>
                 <Link
                   className="button button--outline button--lg"
-                  to="/">
+                  to="/deel-ii/matrix-oud-nieuw">
                   Deel II — Transformatie
                 </Link>
               </div>

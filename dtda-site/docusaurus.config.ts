@@ -7,7 +7,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'DTDA — Effects & Surge',
   tagline: 'Military Industrial Policy — Effects Tech Layer & Surge Capacity',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.png',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -60,12 +60,16 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
+    image: 'img/logo.png',
     colorMode: {
       respectPrefersColorScheme: true,
     },
     navbar: {
       title: 'DTDA — Effects & Surge',
+      logo: {
+        alt: 'DTDA Logo',
+        src: 'img/logo.png',
+      },
       items: [
         {
           type: 'docSidebar',
