@@ -1,0 +1,95 @@
+name: 💡 Implementation Question
+description: Ask about implementing DTDA policy in your country/organization
+title: "[Implementation]: "
+labels: ["implementation", "question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Implementation Question
+
+        Ask how to implement DTDA policy elements in your context.
+
+  - type: dropdown
+    id: country
+    attributes:
+      label: Country/Organization
+      description: Where are you implementing this?
+      options:
+        - Netherlands
+        - United Kingdom
+        - Sweden
+        - Finland
+        - Denmark
+        - Norway
+        - Estonia
+        - Latvia
+        - Lithuania
+        - Iceland
+        - Other EU
+        - Non-EU
+        - Private sector
+        - Research/Academic
+    validations:
+      required: true
+
+  - type: dropdown
+    id: policy_element
+    attributes:
+      label: Policy Element
+      description: Which policy element are you implementing?
+      options:
+        - "Ecosystem Element 1: Entrepreneurship & Integrators"
+        - "Ecosystem Element 2: Capital (ACN/EPL)"
+        - "Ecosystem Element 3: Talent & Capacity"
+        - "Ecosystem Element 4: Research & Data"
+        - "Ecosystem Element 5: Production (MRL/IRL)"
+        - "Ecosystem Element 6: Test & Certification"
+        - "Ecosystem Element 7: Market Access"
+        - "Ecosystem Element 8: Standards & Security"
+        - "Ecosystem Element 9: Infrastructure"
+        - "Ecosystem Element 10: Orchestration & Governance"
+        - L1-L4 Airspace Prioritization
+        - Performance Modes (SLOS-DAA, ELOS-COOP, etc.)
+        - Capacity Credits
+        - Availability Fees
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Your Context
+      description: Describe your current situation
+      placeholder: "We are a [government/company/organization] in [country] looking to implement..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Specific Question
+      description: What do you need help with?
+      placeholder: "How do we adapt X for our context? What are the legal requirements for Y?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Constraints/Challenges
+      description: What constraints or challenges are you facing?
+      placeholder: "Budget limitations, regulatory barriers, technical capacity, etc."
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: reviewed
+    attributes:
+      label: Have you reviewed the documentation?
+      options:
+        - label: I have read the relevant policy section
+          required: true
+        - label: I have checked existing discussions
+          required: false

@@ -1,0 +1,89 @@
+name: 📝 Policy Feedback
+description: Suggest improvements or changes to DTDA policy
+title: "[Policy]: "
+labels: ["policy", "feedback"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Policy Feedback
+
+        Thank you for contributing to DTDA policy development! Your feedback helps improve military industrial policy for JEF partners.
+
+  - type: dropdown
+    id: section
+    attributes:
+      label: Policy Section
+      description: Which section does this feedback relate to?
+      options:
+        - Part I — Ecosystem Elements
+        - Part I — Effects Tech Layer
+        - Part I — Capital Markets (Zuidas)
+        - Part II — L1-L4 Prioritisation
+        - Part II — Performance Modes
+        - Part II — Tech Sovereignty
+        - Appendices
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: feedback_type
+    attributes:
+      label: Feedback Type
+      description: What kind of feedback is this?
+      options:
+        - Strategic direction
+        - Technical detail
+        - Implementation approach
+        - KPI/metrics
+        - International applicability
+        - Legal/regulatory
+        - Economic analysis
+    validations:
+      required: true
+
+  - type: textarea
+    id: current_policy
+    attributes:
+      label: Current Policy
+      description: What does the current policy say? (Quote or link)
+      placeholder: "Currently the policy states..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed_change
+    attributes:
+      label: Proposed Change
+      description: What would you like to change and why?
+      placeholder: "I suggest changing this to... because..."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: country_context
+    attributes:
+      label: Country Context
+      description: Are you providing feedback from a specific JEF partner perspective?
+      options:
+        - Netherlands
+        - United Kingdom
+        - Sweden
+        - Finland
+        - Denmark
+        - Norway
+        - Estonia
+        - Latvia
+        - Lithuania
+        - Iceland
+        - Other/General
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: Additional Context
+      description: Any additional information, links, or references
+      placeholder: "Related research, international examples, etc."

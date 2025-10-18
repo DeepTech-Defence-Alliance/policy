@@ -1,0 +1,95 @@
+name: 🐛 Technical Issue
+description: Report a technical problem with the documentation site
+title: "[Bug]: "
+labels: ["bug", "technical"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Technical Issue Report
+
+        Found a bug on the DTDA policy site? Let us know!
+
+  - type: dropdown
+    id: issue_type
+    attributes:
+      label: Issue Type
+      options:
+        - Page not loading
+        - Broken link
+        - Translation error
+        - Navigation issue
+        - Search not working
+        - Mobile/responsive issue
+        - Comment system (Giscus)
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: url
+    attributes:
+      label: Page URL
+      description: What page is the issue on?
+      placeholder: "https://deeptech-defence-alliance.github.io/policy/..."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: language
+    attributes:
+      label: Language
+      description: Which language version?
+      options:
+        - English (en)
+        - Nederlands (nl)
+        - Both
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What's wrong?
+      placeholder: "When I click X, Y happens instead of Z..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: How can we reproduce this issue?
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. See error
+    validations:
+      required: false
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What should happen?
+    validations:
+      required: false
+
+  - type: input
+    id: browser
+    attributes:
+      label: Browser
+      description: Which browser? (Chrome, Firefox, Safari, Edge, etc.)
+      placeholder: "Chrome 120"
+    validations:
+      required: false
+
+  - type: input
+    id: device
+    attributes:
+      label: Device
+      description: Desktop, mobile, tablet?
+      placeholder: "Desktop (Mac), iPhone 15, etc."
+    validations:
+      required: false

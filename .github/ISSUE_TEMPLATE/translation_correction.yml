@@ -1,0 +1,71 @@
+name: 🌍 Translation Correction
+description: Report translation errors or suggest improvements
+title: "[Translation]: "
+labels: ["translation", "i18n"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Translation Correction
+
+        Help us improve translations! Report errors or suggest better translations.
+
+  - type: dropdown
+    id: language
+    attributes:
+      label: Language
+      options:
+        - Dutch (nl)
+        - English (en)
+    validations:
+      required: true
+
+  - type: input
+    id: page
+    attributes:
+      label: Page/Section
+      description: Which page or section?
+      placeholder: "Part I — Ecosystem Elements, section 3"
+    validations:
+      required: true
+
+  - type: textarea
+    id: current_text
+    attributes:
+      label: Current Text
+      description: What does it say now?
+      placeholder: "Currently it says..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggested_text
+    attributes:
+      label: Suggested Text
+      description: What should it say?
+      placeholder: "It should say..."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: issue_type
+    attributes:
+      label: Issue Type
+      options:
+        - Incorrect translation
+        - Anglicism in Dutch (Denglisch)
+        - Grammar error
+        - Terminology inconsistency
+        - Spelling error
+        - Better phrasing available
+    validations:
+      required: true
+
+  - type: textarea
+    id: explanation
+    attributes:
+      label: Explanation
+      description: Why is this change needed?
+      placeholder: "This is incorrect because... / Better phrasing because..."
+    validations:
+      required: false
