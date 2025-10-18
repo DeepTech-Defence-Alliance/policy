@@ -1,3 +1,7 @@
+# Agent OS / Claude Code local configuration
+.claude/
+agent-os/
+
 # Dependencies
 node_modules/
 .pnp

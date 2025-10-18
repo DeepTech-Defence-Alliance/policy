@@ -2,16 +2,9 @@
 
 Military Industrial Policy documentation and frameworks.
 
-## Structure
+## Overview
 
-- `.claude/` - Agent OS configuration for Claude Code
-  - `agents/` - Specialized agents for various tasks
-  - `commands/` - Slash commands for workflows
-- `agent-os/` - Standards and configuration
-
-## Agent OS
-
-This project uses Agent OS for structured development workflows. See the `.claude/` directory for available commands and agents.
+This repository contains policy documentation and strategic frameworks for military industrial development, focusing on the Effects Tech Layer and strategic autonomy.
 
 ## Organization
 
